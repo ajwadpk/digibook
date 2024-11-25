@@ -44,114 +44,91 @@ body {
 /* Taskbar */
 #taskbar {
   position: fixed;
-  bottom: 20px; /* Floating taskbar */
+  bottom: 20px;
   left: 50%;
   transform: translateX(-50%);
   width: 90%;
   background: rgba(255, 255, 255, 0.2);
-  backdrop-filter: blur(15px); /* Smooth blur */
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); /* Floating effect */
+  backdrop-filter: blur(15px); 
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
   display: flex;
-  align-items: center;
   justify-content: space-between;
   padding: 10px 20px;
-  border-radius: 20px; /* Rounded corners */
-  font-size: 16px;
-  z-index: 10; /* Keeps it above other content */
+  border-radius: 20px;
 }
 
 #taskbar-center {
   flex-grow: 1;
-  text-align: center;
-  color: #fff;
 }
 
 #taskbar-right {
   display: flex;
   gap: 15px;
+  align-items: center;
+  color: white;
   font-size: 14px;
-  color: #fff;
 }
 
 #app-drawer-btn {
-  font-size: 24px;
+  font-size: 30px;
   cursor: pointer;
-  color: #fff;
-  transition: color 0.3s;
+  color: white;
 }
 
-#app-drawer-btn:hover {
-  color: #0078d7; /* Highlight color */
+#time {
+  font-size: 16px;
+  font-weight: bold;
 }
 
 /* App Drawer */
 #app-drawer {
-  position: fixed;
-  bottom: 70px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 90%;
-  background: rgba(255, 255, 255, 0.9);
-  backdrop-filter: blur(10px);
-  border-radius: 15px;
-  padding: 10px;
   display: flex;
-  gap: 10px;
   flex-wrap: wrap;
-  display: none;
+  gap: 20px;
+  position: absolute;
+  top: 70px;
+  left: 10px;
+  background: rgba(0, 0, 0, 0.5);
+  padding: 20px;
+  border-radius: 10px;
+  width: 80%;
 }
 
 .app-icon {
-  width: 70px;
-  height: 70px;
-  background: #0078d7;
+  text-align: center;
   color: white;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  border-radius: 10px;
   cursor: pointer;
-  transition: transform 0.2s ease;
-}
-
-.app-icon img {
-  width: 30px;
-  height: 30px;
+  transition: transform 0.3s;
 }
 
 .app-icon:hover {
   transform: scale(1.1);
 }
 
-/* Desktop Content */
-#desktop-content {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex: 1;
-  text-align: center;
-  font-size: 18px;
-  color: #333;
+.app-icon i {
+  font-size: 40px;
+}
+
+.app-icon p {
+  margin-top: 10px;
 }
 
 /* App Windows */
 .app-window {
-  position: fixed;
+  display: none;
+  width: 100%;
+  height: 100%;
+  position: absolute;
   top: 0;
   left: 0;
-  width: 100vw;
-  height: 100vh;
   background: white;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-  display: flex;
-  flex-direction: column;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
   z-index: 100;
-  padding: 20px;
 }
 
 .window-header {
-  background: #0078d7;
+  background: #0078d4;
   color: white;
   padding: 10px;
   display: flex;
@@ -160,43 +137,58 @@ body {
   border-radius: 10px 10px 0 0;
 }
 
-.window-content {
-  flex: 1;
-  padding: 20px;
-  overflow: auto;
-}
-
-/* Input Fields and Buttons */
-input[type="text"] {
-  width: 80%;
-  padding: 10px;
-  margin-top: 10px;
-  border-radius: 5px;
-  border: 1px solid #ccc;
-  font-size: 16px;
-}
-
-button {
-  padding: 10px 20px;
-  background-color: #0078d7;
+.window-header button {
+  background: #e53935;
   color: white;
   border: none;
+  padding: 5px 10px;
   border-radius: 5px;
-  font-size: 14px;
   cursor: pointer;
-  transition: background-color 0.3s;
 }
 
-button:hover {
-  background-color: #005a8a;
+.window-header button:hover {
+  background: #c62828;
 }
 
-ul {
-  list-style-type: none;
-  padding: 0;
+.window-content {
+  padding: 20px;
 }
 
-li {
-  margin-bottom: 10px;
-  font-size: 16px;
+/* Home Screen */
+#home-screen {
+  display: none;
+  background: linear-gradient(to bottom, #ff9a9e, #fad0c4);
+  flex: 1;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+#desktop-content {
+  color: white;
+  font-size: 18px;
+  font-weight: 500;
+}
+
+#desktop-content p {
+  margin-top: 20px;
+}
+
+/* Boot Animation */
+@keyframes fadeOut {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
