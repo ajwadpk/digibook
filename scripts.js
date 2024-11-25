@@ -1,105 +1,44 @@
-// Boot screen and home screen visibility
-const bootScreen = document.getElementById("boot-screen");
-const homeScreen = document.getElementById("home-screen");
-
-// Boot animation when the page loads
+// Booting animation
 function startBootAnimation() {
-  setTimeout(() => {
-    bootScreen.style.display = "none"; // Hide boot screen
-    homeScreen.style.display = "block"; // Show home screen
-    updateTime(); // Start updating the time on taskbar
-  }, 5000); // Boot screen is shown for 5 seconds
+  setTimeout(function() {
+    document.getElementById('boot-screen').style.display = 'none';
+    document.getElementById('home-screen').style.display = 'flex';
+    setInterval(updateTime, 1000); // Update time every second
+  }, 3000);
 }
 
-// Time Update (Displays current time on Taskbar)
+// Update Time on Taskbar
 function updateTime() {
-  let timeElement = document.getElementById("time");
-  setInterval(() => {
-    let now = new Date();
-    let time = now.toLocaleTimeString();
-    timeElement.textContent = time;
-  }, 1000);
+  const now = new Date();
+  const hours = String(now.getHours()).padStart(2, '0');
+  const minutes = String(now.getMinutes()).padStart(2, '0');
+  const timeString = `${hours}:${minutes}`;
+  document.getElementById('time').textContent = timeString;
 }
 
-// Toggle App Drawer visibility
+// Toggle App Drawer
 function toggleAppDrawer() {
-  let appDrawer = document.getElementById("app-drawer");
-  appDrawer.style.display = appDrawer.style.display === "none" ? "flex" : "none";
+  const drawer = document.getElementById('app-drawer');
+  drawer.style.display = (drawer.style.display === 'none' || drawer.style.display === '') ? 'flex' : 'none';
 }
 
-// Launch App function
-function launchApp(appId) {
-  let app = document.getElementById(appId);
-  let taskbar = document.getElementById("taskbar");
-  let appDrawer = document.getElementById("app-drawer");
-
-  if (app) {
-    // Hide taskbar when app is opened
-    taskbar.style.display = "none";
-    // Close app drawer if open
-    appDrawer.style.display = "none";
-    // Open the app window in full-screen mode
-    app.style.display = "flex";
-  }
+// Launch an App
+function launchApp(appName) {
+  const appWindow = document.getElementById(appName);
+  appWindow.style.display = 'block';
+  appWindow.style.width = '100vw'; // Make app full-screen
+  appWindow.style.height = '100vh'; // Make app full-screen
+  document.getElementById('home-screen').style.display = 'none'; // Hide home screen
 }
 
-// Close App and Show Taskbar Again
-function closeApp(appId) {
-  let app = document.getElementById(appId);
-  let taskbar = document.getElementById("taskbar");
-
-  if (app) {
-    // Close the app window
-    app.style.display = "none";
-    // Show taskbar again
-    taskbar.style.display = "flex";
-  }
+// Close an App
+function closeApp(appName) {
+  const appWindow = document.getElementById(appName);
+  appWindow.style.display = 'none';
+  document.getElementById('home-screen').style.display = 'flex'; // Show home screen again
 }
 
-// Change Wallpaper from Settings
-function changeWallpaper(style) {
-  document.body.style.background = style;
+// Change Wallpaper
+function changeWallpaper(wallpaper) {
+  document.body.style.background = wallpaper;
 }
-
-// Assignment Tracker Functions
-let assignments = [];
-
-// Add new assignment to the list
-function addAssignment() {
-  let newAssignment = document.getElementById("new-assignment").value;
-  if (newAssignment) {
-    assignments.push(newAssignment);
-    updateAssignmentsList();
-    document.getElementById("new-assignment").value = ""; // Clear input
-  }
-}
-
-// Update the assignments list in the tracker
-function updateAssignmentsList() {
-  let assignmentsList = document.getElementById("assignments");
-  assignmentsList.innerHTML = ""; // Clear the list
-
-  assignments.forEach((assignment, index) => {
-    let li = document.createElement("li");
-    li.textContent = `${index + 1}. ${assignment}`;
-    assignmentsList.appendChild(li);
-  });
-}
-
-// Handle app drawer items
-const appIcons = document.querySelectorAll(".app-icon");
-appIcons.forEach(icon => {
-  icon.addEventListener("click", function() {
-    let appId = icon.getAttribute("onclick").match(/'([^']+)'/)[1];
-    launchApp(appId);
-  });
-});
-
-// Handle the "X" button to close the app
-const closeButtons = document.querySelectorAll(".window-header button");
-closeButtons.forEach(button => {
-  button.addEventListener("click", function() {
-    let appId = button.closest(".app-window").id;
-    closeApp(appId);
-  });
-});
