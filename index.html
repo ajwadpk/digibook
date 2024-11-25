@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nexus DigiBook OS</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body onload="startBootAnimation()">
+  <!-- Boot Screen -->
+  <div id="boot-screen">
+    <div class="boot-logo">
+      <h1>Nexus DigiBook</h1>
+      <p>Empowering Students</p>
+      <div class="loading-spinner"></div>
+    </div>
+  </div>
+
+  <!-- Home Screen -->
+  <div id="home-screen" style="display: none;">
+    <div id="taskbar">
+      <div id="app-drawer-btn" onclick="toggleAppDrawer()">☰</div>
+      <div id="taskbar-center"></div>
+      <div id="taskbar-right">
+        <span id="time">12:00</span>
+        <span>🔋 85%</span>
+      </div>
+    </div>
+
+    <div id="app-drawer" style="display: none;">
+      <div class="app-icon" onclick="launchApp('assignment-tracker')">📋 Tracker</div>
+      <div class="app-icon" onclick="launchApp('reader')">📖 Reader</div>
+      <div class="app-icon" onclick="launchApp('notes')">📝 Notes</div>
+      <div class="app-icon" onclick="launchApp('calendar')">📅 Calendar</div>
+      <div class="app-icon" onclick="launchApp('browser')">🌐 Browser</div>
+      <div class="app-icon" onclick="launchApp('settings')">⚙️ Settings</div>
+    </div>
+
+    <div id="desktop-content">
+      <p>Click the ☰ button to access apps</p>
+    </div>
+  </div>
+
+  <!-- App Windows -->
+  <div id="reader" class="app-window" style="display: none;">
+    <div class="window-header">
+      <span>Reader</span>
+      <button onclick="closeApp('reader')">X</button>
+    </div>
+    <div class="window-content">
+      <p>Welcome to the Reader App!</p>
+    </div>
+  </div>
+
+  <div id="assignment-tracker" class="app-window" style="display: none;">
+    <div class="window-header">
+      <span>Assignment Tracker</span>
+      <button onclick="closeApp('assignment-tracker')">X</button>
+    </div>
+    <div class="window-content">
+      <h3>Your Assignments</h3>
+      <ul id="assignments"></ul>
+      <input type="text" id="new-assignment" placeholder="New Assignment" />
+      <button onclick="addAssignment()">Add</button>
+    </div>
+  </div>
+
+  <div id="settings" class="app-window" style="display: none;">
+    <div class="window-header">
+      <span>Settings</span>
+      <button onclick="closeApp('settings')">X</button>
+    </div>
+    <div class="window-content">
+      <h3>Personalization</h3>
+      <p>Choose Wallpaper:</p>
+      <button onclick="changeWallpaper('linear-gradient(to bottom, #ff9a9e, #fad0c4)')">Gradient 1</button>
+      <button onclick="changeWallpaper('linear-gradient(to bottom, #a1c4fd, #c2e9fb)')">Gradient 2</button>
+    </div>
+  </div>
+
+  <script src="scripts.js"></script>
+</body>
+</html>
