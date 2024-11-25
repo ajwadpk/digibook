@@ -195,47 +195,36 @@ button:hover {
   100% { transform: rotate(360deg); }
 }
 
-/* Styling for Assignment Tracker App */
-#assignments {
-  list-style-type: none;
-  padding: 0;
+/* App Window Close Button */
+button {
+  padding: 10px 20px;
+  background-color: #0078d7;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background-color 0.3s;
 }
 
-#assignments li {
-  padding: 5px;
-  border-bottom: 1px solid #ccc;
+button:hover {
+  background-color: #005a8a;
 }
 
-/* Responsive Design */
-@media (max-width: 768px) {
-  #taskbar {
-    flex-direction: column;
-    gap: 10px;
-  }
-
-  #taskbar-right {
-    justify-content: center;
-  }
-
-  .app-window {
-    width: 90%;
-    height: 80%;
-    top: 10px;
-    left: 5%;
-  }
+/* App Icons */
+.app-icon {
+  width: 70px;
+  height: 70px;
+  background: #0078d7;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: transform 0.2s ease;
 }
 
-@media (max-width: 480px) {
-  .app-icon {
-    width: 50px;
-    height: 50px;
-    font-size: 20px;
-  }
-
-  .app-window {
-    width: 90%;
-    height: 80%;
-    top: 10px;
-    left: 5%;
-  }
+.app-icon:hover {
+  transform: scale(1.1);
 }
