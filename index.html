@@ -5,6 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Nexus DigiBook OS</title>
   <link rel="stylesheet" href="styles.css">
+  <!-- Font Awesome for icons -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
 </head>
 <body onload="startBootAnimation()">
   <!-- Boot Screen -->
@@ -29,27 +31,27 @@
 
     <div id="app-drawer" style="display: none;">
       <div class="app-icon" onclick="launchApp('assignment-tracker')">
-        <img src="icons/tracker.png" alt="Tracker">
+        <i class="fas fa-clipboard-list"></i>
         <p>Tracker</p>
       </div>
       <div class="app-icon" onclick="launchApp('reader')">
-        <img src="icons/reader.png" alt="Reader">
+        <i class="fas fa-book-reader"></i>
         <p>Reader</p>
       </div>
       <div class="app-icon" onclick="launchApp('notes')">
-        <img src="icons/notes.png" alt="Notes">
+        <i class="fas fa-sticky-note"></i>
         <p>Notes</p>
       </div>
       <div class="app-icon" onclick="launchApp('calendar')">
-        <img src="icons/calendar.png" alt="Calendar">
+        <i class="fas fa-calendar-alt"></i>
         <p>Calendar</p>
       </div>
       <div class="app-icon" onclick="launchApp('browser')">
-        <img src="icons/browser.png" alt="Browser">
+        <i class="fas fa-globe"></i>
         <p>Browser</p>
       </div>
       <div class="app-icon" onclick="launchApp('settings')">
-        <img src="icons/settings.png" alt="Settings">
+        <i class="fas fa-cogs"></i>
         <p>Settings</p>
       </div>
     </div>
